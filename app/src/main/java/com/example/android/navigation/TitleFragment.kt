@@ -25,7 +25,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.android.navigation.databinding.FragmentTitleBinding
@@ -35,8 +34,8 @@ class TitleFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val binding: FragmentTitleBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_title, container, false)
-        binding.playButton.setOnClickListener {
-            TitleFragmentDirections.actionTitleFragmentToGameFragment()
+        binding.playButton.setOnClickListener { view ->
+            view.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToGameFragment())
         }
         setHasOptionsMenu(true)
         return binding.root
